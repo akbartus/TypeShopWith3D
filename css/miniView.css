@@ -1,0 +1,218 @@
+#closeButton {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+    z-index: 2;
+    /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer;
+    /* Add a pointer on hover */
+}
+
+#overlay {
+    position: fixed;
+    /* Sit on top of the page content */
+    display: none;
+    /* Hidden by default */
+    width: 100%;
+    /* Full width (cover the whole page) */
+    height: 15%;
+    /* Full height (cover the whole page) */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Black background with opacity */
+    z-index: 2;
+    /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer;
+    /* Add a pointer on hover */
+}
+
+#titleText {
+    text-align: center;
+    padding-top: 10px;
+    color: #B69730;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#description {
+    font-size: 18px;
+    color: #fff;
+    padding: 10px 10px;
+    margin-top: 0px;
+    text-align: center;
+}
+
+
+
+#closeButton:hover {
+    opacity: 1;
+}
+
+#closeButton:before,
+#closeButton:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 4px;
+    background-color: #000;
+}
+
+#closeButton:before {
+    transform: rotate(45deg);
+}
+
+#closeButton:after {
+    transform: rotate(-45deg);
+}
+
+
+/* SVG */
+
+.str0 {
+    stroke: #B69730;
+    stroke-width: 10.42;
+    stroke-miterlimit: 2.61313
+}
+
+.fil1 {
+    fill: #B69730
+}
+
+.fil0 {
+    fill: white
+}
+
+#booksButton,
+#typeLibraryButton,
+#pairingPastButton,
+#darrensTypedButton,
+#chandlerPriceButton,
+#platenPressesButton,
+#vandercookButton,
+#inkButton {
+    cursor: pointer;
+}
+
+/* ----- */
+.borderDiv {
+    width: 100%;
+    height: 100%;
+    border: 1px solid;
+    overflow: hidden;
+    position: relative;
+    overflow: hidden;
+}
+
+.mainContainer {
+    width: 2000px;
+    height: 1500px;
+    position: relative;
+}
+
+#view {
+    left: -250px;
+    top: -300px;
+}
+
+/* Tooltip */
+
+
+/* minimap */
+#minimap #selectWin {
+    z-index: 2;
+}
+
+
+#minimap #selectWin .selectionWin {
+    position: absolute;
+    background-color: #5d5d5d;
+    opacity: 0.5;
+}
+
+#minimap,
+#selectWin,
+#miniview {
+    position: fixed;
+    top: 5%;
+    right: 2%;
+    overflow: hidden;
+    display: block
+}
+
+#miniview {
+    border: 2px solid rgb(199 116 92);
+}
+
+#minimap .mainContainer {
+    transform-origin: left top;
+    background-color: #fff;
+}
+
+
+
+/* Photo Background, 360 photos */
+#mainScene {
+    display: none;
+}
+
+
+/* Scroller */
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Firefox scroller */
+.tooltipster-content {
+    scrollbar-color: #888 #f1f1f1;
+    scrollbar-width: thin;
+}
+
+/* Responsiveness */
+@media only screen and (max-width: 500px) {
+
+    #view {
+        left: -600px;
+        top: -300px;
+    }
+
+    #minimap,
+    #minimap #selectWin,
+    #minimap #miniview {
+        position: fixed;
+        bottom: 5% !important;
+        right: 5% !important;
+        overflow: hidden
+    }
+
+
+}
+
+@media only screen and (max-width: 800px) {
+    #view {
+        left: -600px;
+        top: -400px;
+    }
+}

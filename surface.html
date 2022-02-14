@@ -1,0 +1,34 @@
+<html>
+    <head>
+    <script src='https://aframe.io/releases/1.2.0/aframe.min.js'></script>
+    <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script> 
+<script>
+    
+</script>    
+</head>
+    <body>
+        <a-scene>
+            <a-assets>
+                <a-asset-item id="books" src="3d/books.glb"></a-asset-item>
+                <a-asset-item id="chandlerPrice" src="3d/chandlerPrice.glb"></a-asset-item>
+                <a-asset-item id="ink" src="3d/ink.glb"></a-asset-item>
+                <a-asset-item id="press" src="3d/press.glb"></a-asset-item>
+                <a-asset-item id="type" src="3d/type.glb"></a-asset-item>
+                <a-asset-item id="typeLibrary" src="3d/typeLibrary.glb"></a-asset-item>
+                <a-asset-item id="vandercook" src="3d/vandercook.glb"></a-asset-item>
+              </a-assets>
+              
+
+              <a-entity gltf-model="#ink" position="0 0 0" rotation="0 90 90" scale="0.3 0.3 0.3"></a-entity>
+
+              <!-- <a-entity gltf-model="#chandlerPrice" position="0 0 0" rotation="0 -90 0"></a-entity> -->
+              <!-- <a-entity gltf-model="#ink" position="0 0 0" scale="0.3 0.3 0.3" rotation="0 90 0"></a-entity>   -->
+              
+              <!-- vandercook, typelibrary -->
+              <a-entity id="myCamera" rotation="90 0 0" camera orbit-controls="target: 0 1.6 -0.5; minDistance: 0.3; maxDistance: 3; initialPosition: 0 3 2.5; maxPolarAngle: 87"></a-entity>
+            
+            
+              <a-sky color='#ECECEC'></a-sky>
+        </a-scene>
+    </body>
+</html>

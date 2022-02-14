@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>New Map</title>
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+	<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+	<script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="js/jquery.ui.touch-punch.min.js"></script>
+	<script src="js/jquery.mousewheel.js"></script>
+	<script src="js/miniView.js"></script>
+	<link rel="stylesheet" href="css/miniView.css" />
+	<script>
+		// Instantiate minimap
+		$(function () {
+			var miniViewObj = MiniView.init({
+				selector: "#view"
+			});
+		})
+	</script>
+	<style>
+
+	</style>
+</head>
+
+<body>
+
+
+	<div class="borderDiv" id="container">
+		<div class="mainContainer" id="view">
+
+
+			<!-- SVG Path -->
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11692.91 8267.72"
+				xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+				<defs>
+					<clipPath id="id0">
+						<rect x="127.71" y="258.86" width="11453.12" height="7635.41" />
+					</clipPath>
+				</defs>
+				<g id="Layer_x0020_1">
+					<metadata id="CorelCorpID_0Corel-Layer" />
+					<g style="clip-path:url(#id0)">
+						<image id="main.jpg" x="127.71" y="258.86" width="11453.12" height="7635.41"
+							xlink:href="img/mainImg.jpg" />
+					</g>
+
+					<g id="booksButton">
+						<rect class="fil0 str0" x="4290.9" y="2456.78" width="389.03" height="389.03" />
+						<polygon class="fil1 str0" points="4577.49,2651.29 4423.95,2503.74 4423.95,2798.85 " />
+					</g>
+					<g id="typeLibraryButton">
+						<rect class="fil0 str0"
+							transform="matrix(-4.94743E-15 0.062245 -0.062245 -4.94743E-15 2419.55 4248.41)"
+							width="6250" height="6250" />
+						<polygon class="fil1 str0" points="2225.03,4350.85 2077.48,4504.39 2372.59,4504.39 " />
+					</g>
+					<g id="pairingPastButton">
+						<rect class="fil0 str0" x="1082.65" y="1394.19" width="389.03" height="389.03" />
+						<polygon class="fil1 str0" points="1185.09,1588.71 1338.63,1736.26 1338.63,1441.15 " />
+					</g>
+					<g id="darrensTypedButton">
+						<rect class="fil0 str0" x="6403.11" y="2313.24" width="389.03" height="389.03" />
+						<polygon class="fil1 str0" points="6689.71,2507.76 6536.17,2360.2 6536.17,2655.31 " />
+					</g>
+					<g id="chandlerPriceButton">
+						<rect class="fil0 str0" x="7923.96" y="1490.31" width="389.03" height="389.03" />
+						<polygon class="fil1 str0" points="8210.56,1684.82 8057.02,1537.27 8057.02,1832.38 " />
+					</g>
+					<g id="platenPressesButton">
+						<rect class="fil0 str0" x="9021.2" y="3828.28" width="389.03" height="389.03" />
+						<polygon class="fil1 str0" points="9123.64,4022.79 9277.18,4170.35 9277.18,3875.23 " />
+					</g>
+					<g id="vandercookButton">
+						<rect class="fil0 str0"
+							transform="matrix(8.24449E-15 -0.062245 0.062245 8.24449E-15 8187.89 6498.54)" width="6250"
+							height="6250" />
+						<polygon class="fil1 str0" points="8382.41,6396.1 8529.96,6242.56 8234.85,6242.56 " />
+					</g>
+					<g id="inkButton">
+						<rect class="fil0 str0"
+							transform="matrix(8.24449E-15 -0.062245 0.062245 8.24449E-15 5927.48 4488.11)" width="6250"
+							height="6250" />
+						<polygon class="fil1 str0" points="6122,4385.67 6269.56,4232.13 5974.44,4232.13 " />
+					</g>
+				</g>
+			</svg>
+		</div>
+	</div>
+
+	<div id="closeButton"></div>
+	<div id="overlay">
+		<div id="titleText"></div>
+		<p id="description"></p>
+	</div>
+
+
+	<!-- AFrame Scene -->
+	<a-scene id="mainScene" cursor="rayOrigin: mouse" vr-mode-ui="enabled: false"
+		device-orientation-permission-ui="enabled: false"
+		effects="bloom, fxaa" bloom="radius: 0.66" fxaa>
+		<a-assets>
+			<a-asset-item id="books" src="3d/books.glb"></a-asset-item>
+			<a-asset-item id="chandlerPrice" src="3d/chandlerPrice.glb"></a-asset-item>
+			<a-asset-item id="ink" src="3d/ink.glb"></a-asset-item>
+			<a-asset-item id="press" src="3d/press.glb"></a-asset-item>
+			<a-asset-item id="type" src="3d/type.glb"></a-asset-item>
+			<a-asset-item id="typeLibrary" src="3d/typeLibrary.glb"></a-asset-item>
+			<a-asset-item id="vandercook" src="3d/vandercook.glb"></a-asset-item>
+		</a-assets>
+
+		<!-- Change this part dynamically -->
+		<a-entity light="type: ambient; color: #CCC; intensity: 0.95"></a-entity>
+		<a-entity id="model" gltf-model="" rotation="" scale=""></a-entity>
+		<a-entity id="myCamera" rotation="90 0 0" camera
+			orbit-controls="minDistance: 0.5; maxDistance: 5; initialPosition: 0 3 2.5; maxPolarAngle: 87">
+		</a-entity>
+
+		<a-sky color='#ffe384'></a-sky>
+	</a-scene>
+</body>
+
+<script>
+	var mainScene = document.querySelector("a-scene"),
+		model = mainScene.querySelector("#model");
+		myCamera = mainScene.querySelector("#myCamera");
+		container = document.getElementById("container"),
+		overlay = document.getElementById("overlay");
+		closeButton = document.getElementById("closeButton");
+		titleText = document.getElementById("titleText");
+		description = document.getElementById("description");
+
+
+
+	var myText =
+		[{
+			title: "BOOKS",
+			content: "Pictured alongside books produced by OHIO students in the bindery is focus drawing, the first in a series of books on design education published by the facility's namesake, Don Adleta."
+		},
+		{
+			title: "TYPE LIBRARY",
+			content: "The library includes 17 cabinets organized by font and size and 400+ drawers of type from 8 point to 8 inches, including 'The Sisters Wood Type Collection' donated by Karen Nulf and Anita Marks."
+
+		},
+		{
+			title: "DARREN'S TYPE",
+			content: "Assistant Professor Darren Baker has been casting metal type, including the Caslon font (pictured here) that was used to set the Declaration of Independence and the U.S. Constitution."
+
+		},
+		{
+			title: "THE CHANDLER & PRICE",
+			content: "This old-style, hand-fed, flywheel-driven 8x12 C&P printing press dates back to pre-1910 and was donated by Linda Donaldson."
+
+		},
+		{
+			title: "PLATEN PRESSES",
+			content: "Letterpress started on table-top platen presses, such as these Kelsey Excelsior presses and the larger American Printing Equipment press from donors Darren Baker, Sheppard Black and Linda Donaldson."
+
+		},
+		{
+			title: "THE VANDERCOOK",
+			content: "The 'big kahuna' of the facility, weighing 4,000+ pounds, is the Vandercook & Sons No. 223 proofing press with three sets of inking rollers. Manufactured in the late 1930s to early '40s, it was donated by Lawhead Press."
+
+		},
+		{
+			title: "INK",
+			content: "The facility houses a complete ink supply, including some inks donated decades ago by NA Graphics that are still being used today."
+
+		}
+		]
+
+
+	// CloseButton
+
+	closeButton.addEventListener("click", function () {
+		mainScene.style.display = "none";
+		overlay.style.display = "none";
+		closeButton.style.display = "none";
+		container.style.display = "block";
+	})
+
+	// Show 3d of the books
+	document.getElementById("booksButton").addEventListener("click", function () {
+		container.style.display = "none";
+		mainScene.style.display = "block";
+		overlay.style.display = "block";
+		closeButton.style.display = "block";
+	
+		model.removeAttribute("gltf-model");
+		model.setAttribute("gltf-model", "#books");
+		model.setAttribute("rotation", "0 90 90");
+		model.setAttribute("scale", "1 1 1");
+		myCamera.setAttribute("orbit-controls", "target: 0 0 -1");
+		
+
+		titleText.innerHTML = myText[0].title;
+		description.innerHTML = myText[0].content;
+	})
+
+	// Show 3d of typeLibrary
+	document.getElementById("typeLibraryButton").addEventListener("click", function () {
+		container.style.display = "none";
+		mainScene.style.display = "block";
+		overlay.style.display = "block";
+		closeButton.style.display = "block";
+	
+		model.removeAttribute("gltf-model");
+		model.setAttribute("gltf-model", "#typeLibrary");
+		model.setAttribute("rotation", "0 90 90");
+		model.setAttribute("scale", "1 1 1");
+		myCamera.setAttribute("orbit-controls", "target: 0 1.6 -0.5");
+		
+		
+		titleText.innerHTML = myText[1].title;
+		description.innerHTML = myText[1].content;
+	})
+
+
+	// Show Darren's type
+	document.getElementById("darrensTypedButton").addEventListener("click", function () {
+		container.style.display = "none";
+		mainScene.style.display = "block";
+		overlay.style.display = "block";
+		closeButton.style.display = "block";
+	
+		model.removeAttribute("gltf-model");
+		model.setAttribute("gltf-model", "#type");
+		model.setAttribute("rotation", "0 90 90");
+		model.setAttribute("scale", "1 1 1");
+		myCamera.setAttribute("orbit-controls", "target: 0 0 -0.5");
+		
+		
+		titleText.innerHTML = myText[2].title;
+		description.innerHTML = myText[2].content;
+	})
+
+
+// Show Chandler and Price
+document.getElementById("chandlerPriceButton").addEventListener("click", function () {
+		container.style.display = "none";
+		mainScene.style.display = "block";
+		overlay.style.display = "block";
+		closeButton.style.display = "block";
+	
+		model.removeAttribute("gltf-model");
+		model.setAttribute("gltf-model", "#chandlerPrice");
+		model.setAttribute("rotation", "0 -90 -90");
+		model.setAttribute("scale", "1 1 1");
+		myCamera.setAttribute("orbit-controls", "target: 0 0 -0.5");
+		
+		
+		titleText.innerHTML = myText[3].title;
+		description.innerHTML = myText[3].content;
+	})
+
+
+	// Show press
+	document.getElementById("platenPressesButton").addEventListener("click", function () {
+		container.style.display = "none";
+		mainScene.style.display = "block";
+		overlay.style.display = "block";
+		closeButton.style.display = "block";
+	
+		model.removeAttribute("gltf-model");
+		model.setAttribute("gltf-model", "#press");
+		model.setAttribute("rotation", "0 90 90");
+		model.setAttribute("scale", "1 1 1");
+		myCamera.setAttribute("orbit-controls", "target: 0 0 -0.5");
+		
+		
+		titleText.innerHTML = myText[4].title;
+		description.innerHTML = myText[4].content;
+	})
+
+
+	// Show vandercook
+	document.getElementById("vandercookButton").addEventListener("click", function () {
+		container.style.display = "none";
+		mainScene.style.display = "block";
+		overlay.style.display = "block";
+		closeButton.style.display = "block";
+	
+		model.removeAttribute("gltf-model");
+		model.setAttribute("gltf-model", "#vandercook");
+		model.setAttribute("rotation", "0 90 90");
+		model.setAttribute("scale", "1 1 1");
+		myCamera.setAttribute("orbit-controls", "target: 0 1.6 -0.5");
+		
+		
+		titleText.innerHTML = myText[5].title;
+		description.innerHTML = myText[5].content;
+	})
+
+
+	// Show vandercook
+	document.getElementById("inkButton").addEventListener("click", function () {
+		container.style.display = "none";
+		mainScene.style.display = "block";
+		overlay.style.display = "block";
+		closeButton.style.display = "block";
+	
+		model.removeAttribute("gltf-model");
+		model.setAttribute("gltf-model", "#ink");
+		model.setAttribute("rotation", "0 90 90");
+		model.setAttribute("scale", "0.3 0.3 0.3");
+		myCamera.setAttribute("orbit-controls", "target: 0 1.6 -0.5");
+		
+		
+		titleText.innerHTML = myText[6].title;
+		description.innerHTML = myText[6].content;
+	})
+</script>
+
+</html>
